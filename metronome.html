@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tempo Input</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input[type="number"] {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <form id="tempoForm">
+        <label for="tempo">Enter Tempo (BPM):</label>
+        <input type="number" id="tempo" name="tempo" min="40" max="208" value="60" required>
+        <button type="button" onclick="openMetronome()">OK</button>
+    </form>
+
+    <script>
+        function openMetronome() {
+            const tempo = document.getElementById('tempo').value || 60;
+            if (tempo) {
+                const metronomeWindow = window.open('', '_blank', 'width=400,height=300');
+                metronomeWindow.document.open();
+                metronomeWindow.document.write(`
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Metronome</title>
+                        <style>
+                            body {
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
+                                height: 100vh;
+                                margin: 0;
+                                font-family: Arial, sans-serif;
+                            }
+                            button {
+                                padding: 10px 20px;
+                                font-size: 16px;
+                                margin: 5px;
+                            }
+                            #status {
+                                margin: 20px;
+                                font-size: 20px;
+                            }
+                            #dot {
+                                width: 20px;
+                                height: 20px;
+                                border-radius: 50%;
+                                background-color: red;
+                                margin: 20px;
+                                opacity: 0.5;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div id="status">Metronome stopped</div>
+                        <div id="dot"></div>
+                        <button id="startBtn">Start</button>
+                        <button id="stopBtn">Stop</button>
+                        <script>
+                            console.log("Metronome script loaded"); // Debugging line
+                            const startBtn = document.getElementById('startBtn');
+                            const stopBtn = document.getElementById('stopBtn');
+                            const status = document.getElementById('status');
+                            const dot = document.getElementById('dot');
+                            let intervalId;
+                            const audio = new Audio('beep.mp3');
+
+                            startBtn.addEventListener('click', () => {
+                                console.log("Start button clicked"); // Debugging line
+                                const tempo = ${tempo};
+                                const interval = 60000 / tempo; // tempo in milliseconds
+                                console.log("Tempo:", tempo, "Interval:", interval); // Debugging line
+
+                                intervalId = setInterval(() => {
+                                    audio.play();
+                                    status.innerText = 'Metronome running at ' + tempo + ' BPM';
+                                    dot.style.opacity = dot.style.opacity === '0.5' ? '1' : '0.5';
+                                }, interval);
+                            });
+
+                            stopBtn.addEventListener('click', () => {
+                                console.log("Stop button clicked"); // Debugging line
+                                clearInterval(intervalId);
+                                status.innerText = 'Metronome stopped';
+                                dot.style.opacity = '0.5';
+                            });
+                        <\/script>
+                    </body>
+                    </html>
+                `);
+                metronomeWindow.document.close();
+            }
+        }
+    </script>
+</body>
+</html>

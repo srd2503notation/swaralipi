@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swaralipi</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shivaji+01&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav id="main-menu">
+        <ul>
+            <li><a href="#">File</a></li>
+            <li><a href="#">Edit</a></li>
+            <li><a href="#">View</a></li>
+            <li><a href="#">Add</a></li>
+            <li><a href="#">Format</a></li>
+            <li><a href="#">Tools</a></li>
+            <li><a href="#">Plugins</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+    </nav>
+    <div id="icon-bar">
+        <img src="new.png" alt="New" title="New">
+        <img src="open.png" alt="Open" title="Open">
+        <img src="save.png" alt="Save" title="Save">
+        <img src="undo.png" alt="Undo" title="Undo">
+        <img src="redo.png" alt="Redo" title="Redo">
+        <img src="print.png" alt="Print" title="Print">
+        <img src="rewind.png" alt="Rewind" title="Rewind">
+        <img src="play.png" alt="Play" title="Play">
+        <img src="metronome.png" alt="Metronome" title="Metronome">
+    </div>
+    <div id="icon-bar-2">
+        <img src="edit.png" alt="Edit" title="Edit">
+        <img src="64th.png" alt="64th Note" title="64th Note">
+        <img src="32nd.png" alt="32nd Note" title="32nd Note">
+        <img src="16th.png" alt="16th Note" title="16th Note">
+        <img src="8th.png" alt="8th Note" title="8th Note">
+        <img src="4th.png" alt="4th Note" title="4th Note">
+        <img src="half.png" alt="Half Note" title="Half Note">
+        <img src="full.png" alt="Full Note" title="Full Note">
+        <img src="period.png" alt="Dotted Note" title="Dotted Note">
+        <img src="tie.png" alt="Tie" title="Tie">
+        <img src="rest.png" alt="Rest" title="Rest">
+        <img src="sharp.png" alt="Sharp" title="Sharp">
+        <img src="natural.png" alt="Natural" title="Natural">
+        <img src="flat.png" alt="Flat" title="Flat">
+    </div>
+    <div id="palette-container">
+        <div id="palette-box">
+            <div class="palette-box-header">Palettes</div>
+            
+            <div class="palette-section">
+                <div class="palette-section-header" onclick="toggleSection(this)">
+                    Key Signature <span class="arrow">&#9660;</span>
+                </div>
+                <div class="palette-buttons" style="display: none;">
+                    <button>C</button>
+                    <button>C#</button>
+                    <button>D</button>
+                    <button>D#</button>
+                    <button>E</button>
+                    <button>F</button>
+                    <button>F#</button>
+                    <button>G</button>
+                    <button>G#</button>
+                    <button>A</button>
+                    <button>A#</button>
+                    <button>B</button>
+                    <button>C</button>
+                </div>
+            </div>
+
+            <div class="palette-section">
+                <div class="palette-section-header" onclick="toggleSection(this)">
+                    Time Signature <span class="arrow">&#9660;</span>
+                </div>
+                <div class="palette-buttons" style="display: none;">
+                    <button>2/4</button>
+                    <button>3/4</button>
+                    <button>4/4</button>
+                    <button>5/4</button>
+                    <button>6/8</button>
+                    <button>7/8</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main>
+        <!-- Content can be added here -->
+    </main>
+    <footer>
+        <p>&copy; 2024 Swaralipi. All rights reserved.</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
